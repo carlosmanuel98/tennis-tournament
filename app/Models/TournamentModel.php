@@ -33,7 +33,7 @@ class TournamentModel extends Model
         $query->rightJoin('tbl_game AS TG', 'TT.id_tournament', '=', 'TG.id_tournament');
         $query->leftJoin('tbl_players AS TP', 'TG.id_player_win', '=', 'TP.id_player');
         $query->leftJoin('tbl_cat_gender AS TCG', 'TT.category_gender', '=', 'TCG.id_cat_gender');
-        if ($id_tournament)     $query->where("TT.id_tournament", "$id_tournament");
+        if (isset($id_tournament))     $query->where("TT.id_tournament", "$id_tournament");
         if (isset($id_gender))         $query->where("TT.category_gender", "$id_gender");
         if (isset($date))              $query->whereRaw("DATE(TT.timestamp)", "$date");
        
